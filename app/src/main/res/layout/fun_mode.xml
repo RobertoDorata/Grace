@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- joy button-->
+    <ImageButton
+        android:id="@+id/joy_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="120dp"
+        android:background="@null"
+        android:src="@drawable/joy"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        xmlns:tools="http://schemas.android.com/tools"
+         />
+
+    <!-- rage button-->
+    <ImageButton
+        android:id="@+id/rage_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="520dp"
+        android:layout_marginBottom="120dp"
+        android:background="@null"
+        android:src="@drawable/rage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        xmlns:tools="http://schemas.android.com/tools"/>
+
+    <!-- sadness button -->
+    <ImageButton
+        android:id="@+id/sadness_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="440dp"
+        android:layout_marginEnd="520dp"
+        android:layout_marginBottom="120dp"
+        android:background="@null"
+        android:src="@drawable/sadness"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        xmlns:tools="http://schemas.android.com/tools" />
+
+    <!-- fear button-->
+    <ImageButton
+        android:id="@+id/fear_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="440dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="120dp"
+        android:background="@null"
+        android:src="@drawable/fear"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        xmlns:tools="http://schemas.android.com/tools"/>
+
+</RelativeLayout>
