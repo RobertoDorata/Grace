@@ -1,18 +1,13 @@
 package com.example.grace.ui.main;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.ListFragment;
 
 import com.example.grace.MainActivity;
 import com.example.grace.R;
@@ -31,6 +26,8 @@ public class FunMode extends Fragment {
             public void onClick(View v)
             {
                 // do something
+                Toast.makeText(getActivity(), "joyButton!",
+                        Toast.LENGTH_LONG).show();
                 try {
                     ((OnEmotionsButtonsListener) mainActivity).onEmotionButtonPressed("joyButton");
                 }
@@ -44,6 +41,8 @@ public class FunMode extends Fragment {
         rageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getActivity(), "angerButton!",
+                        Toast.LENGTH_LONG).show();
                 try {
                     ((OnEmotionsButtonsListener) mainActivity).onEmotionButtonPressed("rageButton");
                 }
@@ -54,28 +53,32 @@ public class FunMode extends Fragment {
             }
         });
 
-        ImageButton fearButton = view.findViewById(R.id.fear_button);
-        fearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    ((OnEmotionsButtonsListener) mainActivity).onEmotionButtonPressed("fearButton");
-                }
-                catch (ClassCastException cce) {
-                    Log.d("cce_fearButton.onClick", "OnEmotionsButtonsListener is not implemented in MainActivity");
-                }
-            }
-        });
-
         ImageButton sadnessButton = view.findViewById(R.id.sadness_button);
         sadnessButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getActivity(), "sadnessButton!",
+                        Toast.LENGTH_LONG).show();
                 try {
                     ((OnEmotionsButtonsListener) mainActivity).onEmotionButtonPressed("sadnessButton");
                 }
                 catch (ClassCastException cce) {
                     Log.d("cce_sadButton.onClick", "OnEmotionsButtonsListener is not implemented in MainActivity");
+                }
+            }
+        });
+
+        ImageButton fearButton = view.findViewById(R.id.fear_button);
+        fearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "fearButton!",
+                        Toast.LENGTH_LONG).show();
+                try {
+                    ((OnEmotionsButtonsListener) mainActivity).onEmotionButtonPressed("fearButton");
+                }
+                catch (ClassCastException cce) {
+                    Log.d("cce_fearButton.onClick", "OnEmotionsButtonsListener is not implemented in MainActivity");
                 }
             }
         });

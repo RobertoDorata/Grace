@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Grace</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Grace</string>
     <string name="tab_text_1">Fun Mode</string>
     <string name="tab_text_2">Train Mode</string>
+    <string name="Bottone4">Bottone4</string>
+    <string name="Bottone2">Bottone2</string>
+    <string name="Bottone1">Bottone1</string>
+    <string name="Bottone3">Bottone3</string>
+    <string name="Toilet">Toilet</string>
+    <string name="Target_Achieved">Target Achieved</string>
+    <string name="Sad">Sad</string>
+    <string name="Tired">Tired</string>
 </resources>

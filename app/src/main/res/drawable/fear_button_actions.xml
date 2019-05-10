@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:enterFadeDuration="2050" android:exitFadeDuration="2050">
+    <item android:state_pressed="true"
+        android:drawable="@drawable/fear"
+        /> <!-- pressed -->
+    <!--<item android:state_focused="true"
+        android:drawable="@drawable/button_focused" /> --><!-- focused -->
+    <item android:drawable="@drawable/fear_pressed" /> <!-- default -->
+</selector>

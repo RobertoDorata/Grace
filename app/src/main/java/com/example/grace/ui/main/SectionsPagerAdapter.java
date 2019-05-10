@@ -20,6 +20,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
     private final Context mContext;
     private final Fragment funMode = new FunMode();
+    private final Fragment trainMode = new TrainMode();
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
@@ -32,8 +33,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Return a PlaceholderFragment (defined as a static inner class below).
         if(position == 0)
             return funMode;
-        else
-            return PlaceholderFragment.newInstance(position + 1);
+        else if(position == 1)
+            return trainMode;
+        return null;
     }
 
     @Nullable

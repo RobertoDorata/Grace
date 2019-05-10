@@ -1,75 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:clickable="true"
+    android:focusable="true"
+    android:background="#91A6FF"
+    app:tabTextColor="#E8E8E8">
 
     <!-- joy button-->
-    <ImageButton
+    <ImageButton xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/joy_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="220dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginRight="115dp"
+        android:layout_marginBottom="128dp"
         android:background="@null"
-        android:src="@drawable/joy"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1"
-        xmlns:tools="http://schemas.android.com/tools"
-         />
+        android:src="@drawable/joy_button_actions"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/fear_button"
+        app:layout_constraintEnd_toStartOf="@+id/rage_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- rage button-->
-    <ImageButton
+    <ImageButton xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/rage_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="260dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="220dp"
-        android:layout_marginEnd="520dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="130dp"
         android:background="@null"
-        android:src="@drawable/rage"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1"
-        xmlns:tools="http://schemas.android.com/tools"/>
+        android:src="@drawable/rage_button_actions"
+        app:layout_constraintBottom_toTopOf="@+id/sadness_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/joy_button"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- sadness button -->
-    <ImageButton
+    <ImageButton xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/sadness_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="260dp"
-        android:layout_marginTop="440dp"
-        android:layout_marginEnd="520dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:layout_marginBottom="120dp"
         android:background="@null"
-        android:src="@drawable/sadness"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1"
-        xmlns:tools="http://schemas.android.com/tools" />
+        android:src="@drawable/sadness_button_actions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fear_button"
+        app:layout_constraintTop_toBottomOf="@+id/rage_button" />
 
     <!-- fear button-->
-    <ImageButton
+    <ImageButton xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/fear_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="440dp"
-        android:layout_marginEnd="120dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginRight="115dp"
         android:layout_marginBottom="120dp"
         android:background="@null"
-        android:src="@drawable/fear"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1"
-        xmlns:tools="http://schemas.android.com/tools"/>
+        android:src="@drawable/fear_button_actions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sadness_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/joy_button" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
