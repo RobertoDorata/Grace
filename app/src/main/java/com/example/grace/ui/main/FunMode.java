@@ -28,6 +28,7 @@ public class FunMode extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "joyButton!",
                         Toast.LENGTH_LONG).show();
+                Log.d("joyButton pressed", "in FunMode, joyButton has been pressed");
                 try {
                     ((OnEmotionsButtonsListener) mainActivity).onEmotionButtonPressed("joyButton");
                 }

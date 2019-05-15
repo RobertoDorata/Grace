@@ -22,8 +22,8 @@ import java.lang.reflect.Method;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity implements FunMode.OnEmotionsButtonsListener, TrainMode.OnTrainButtonsListener {
-    private BluetoothSocket btSocket;
-    private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+  //  private BluetoothSocket btSocket;
+   // private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements FunMode.OnEmotion
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
+       /* BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
         if(!btAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivity(enableBtIntent);
@@ -46,13 +46,13 @@ public class MainActivity extends AppCompatActivity implements FunMode.OnEmotion
         /*for (BluetoothDevice btDevice : btAdapter.getBondedDevices()) {
             Log.d("device: ", btDevice.getName() + ": indirizzo: " + btDevice.getAddress());
         }*/
-        bluetooth();
+
     }
 
-    public void bluetooth() {
+ /*   public void bluetooth() {
         Log.d("ok", "fino a qui ok");
     }
-
+*/
     @Override
     public void onEmotionButtonPressed(String id) {
          switch (id) {

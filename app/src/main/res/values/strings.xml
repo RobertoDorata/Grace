@@ -10,5 +10,7 @@
     <string name="Toilet">Toilet</string>
     <string name="Target_Achieved">Target Achieved</string>
     <string name="Sad">Sad</string>
+    <string name="CText">CText</string>
+    <string name="comment">comment</string>
     <string name="Tired">Tired</string>
 </resources>
