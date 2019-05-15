@@ -6,26 +6,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import androidx.fragment.app.Fragment;
-
 import com.example.grace.MainActivity;
 import com.example.grace.R;
 
 public class FunMode extends Fragment {
     MainActivity mainActivity = new MainActivity();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fun_mode,
+        View funModeView = inflater.inflate(R.layout.fun_mode,
                 container, false);
+        ImageButton joybutton = funModeView.findViewById(R.id.joy_button);
+        ImageButton rageButton = funModeView.findViewById(R.id.rage_button);
+        ImageButton sadnessButton = funModeView.findViewById(R.id.sadness_button);
+        ImageButton fearButton = funModeView.findViewById(R.id.fear_button);
 
-        ImageButton joybutton = view.findViewById(R.id.joy_button);
         joybutton.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-            {
-                // do something
+            public void onClick(View v) {
                 Toast.makeText(getActivity(), "joyButton!",
                         Toast.LENGTH_LONG).show();
                 try {
@@ -37,7 +37,6 @@ public class FunMode extends Fragment {
             }
         });
 
-        ImageButton rageButton = view.findViewById(R.id.rage_button);
         rageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +52,6 @@ public class FunMode extends Fragment {
             }
         });
 
-        ImageButton sadnessButton = view.findViewById(R.id.sadness_button);
         sadnessButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +66,6 @@ public class FunMode extends Fragment {
             }
         });
 
-        ImageButton fearButton = view.findViewById(R.id.fear_button);
         fearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +80,7 @@ public class FunMode extends Fragment {
             }
         });
 
-        return view;
+        return funModeView;
     }
 
     public interface OnEmotionsButtonsListener {
