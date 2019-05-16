@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "763944445767",
-    "firebase_url": "https://testimone-98ffc.firebaseio.com",
-    "project_id": "testimone-98ffc",
-    "storage_bucket": "testimone-98ffc.appspot.com"
+    "project_number": "680661986097",
+    "firebase_url": "https://grace-android.firebaseio.com",
+    "project_id": "grace-android",
+    "storage_bucket": "grace-android.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:763944445767:android:d6c543f3d75fc208",
+        "mobilesdk_app_id": "1:680661986097:android:d6c543f3d75fc208",
         "android_client_info": {
           "package_name": "com.example.grace"
         }
       },
       "oauth_client": [
         {
-          "client_id": "763944445767-p9aeb3da3oj3nv21dftbb6boodch2olb.apps.googleusercontent.com",
+          "client_id": "680661986097-70gse9ie19lbd575jf1auh6eujqbneqp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBBh2it-T1Xz1GGLEwrGQafguF0giPIGtk"
+          "current_key": "AIzaSyBdwgn3Qe-xQPDTm5Vrdx88tZZiCNGIo3o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "763944445767-p9aeb3da3oj3nv21dftbb6boodch2olb.apps.googleusercontent.com",
+              "client_id": "680661986097-70gse9ie19lbd575jf1auh6eujqbneqp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
