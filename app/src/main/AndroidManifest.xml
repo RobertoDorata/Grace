@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/MyActionBar">
         <activity android:name=".TTS"></activity>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main">

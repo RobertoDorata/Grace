@@ -1,4 +1,5 @@
-package com.example.grace.ui.main;
+package com.example.grace;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
-import com.example.grace.MainActivity;
-import com.example.grace.R;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TrainMode extends Fragment {
     MainActivity mainActivity = new MainActivity();
@@ -82,6 +83,18 @@ public class TrainMode extends Fragment {
                 catch (ClassCastException cce) {
                     Log.d("cce_4Button.onClick", "OnTrainButtonsListener is not implemented in MainActivity");
                 }
+            }
+
+        });
+        FloatingActionButton ttsButton = view.findViewById(R.id.CFButton);
+        ttsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "ttsButton!",
+                        Toast.LENGTH_LONG).show();
+                Log.d("CFButton pressed", "in TrainMode, CFButton has been pressed");
+               Intent openTTS= new Intent(TrainMode.this.getContext() , TTS.class);
+               startActivity(openTTS);
             }
         });
 

@@ -13,4 +13,6 @@
     <string name="CText">CText</string>
     <string name="comment">comment</string>
     <string name="Tired">Tired</string>
+    <string name="Submit">Submit</string>
+    <string name="CFcomment">CFcomment</string>
 </resources>
