@@ -15,4 +15,6 @@
     <string name="Tired">Tired</string>
     <string name="Submit">Submit</string>
     <string name="CFcomment">CFcomment</string>
+    <string name="title_tts">TTS</string>
+    <string name="title_train_mode">TrainMode</string>
 </resources>
