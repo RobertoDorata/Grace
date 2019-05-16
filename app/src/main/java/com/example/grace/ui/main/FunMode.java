@@ -48,7 +48,6 @@ public class FunMode extends Fragment {
                 catch (ClassCastException cce) {
                     Log.d("cce_rageButton.onClick", "OnEmotionsButtonsListener is not implemented in MainActivity");
                 }
-
             }
         });
 

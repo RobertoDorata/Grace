@@ -19,11 +19,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
+import java.net.Socket;
+import java.util.Set;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity implements FunMode.OnEmotionsButtonsListener, TrainMode.OnTrainButtonsListener {
-    private BluetoothSocket btSocket;
-    private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    private BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    private Set<BluetoothDevice> myBluetoothDevices = null;
+    private BluetoothDevice bluetoothDevice;
+    private BluetoothSocket mSocket = null;
+    private UUID MY_UUID = UUID.fromString("847127F4-FD89-4C05-946C-6BBCB285F67E");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,23 +39,41 @@ public class MainActivity extends AppCompatActivity implements FunMode.OnEmotion
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
-        if(!btAdapter.isEnabled()) {
+        if(!bluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivity(enableBtIntent);
         }
-
-        Log.d("paired: ", btAdapter.getBondedDevices().toString());
-        Log.d("ooooook", "fino a qui ok");
-
-        /*for (BluetoothDevice btDevice : btAdapter.getBondedDevices()) {
-            Log.d("device: ", btDevice.getName() + ": indirizzo: " + btDevice.getAddress());
-        }*/
-        bluetooth();
+        myBluetoothDevices = bluetoothAdapter.getBondedDevices();
+        for(BluetoothDevice tempBluetoothDevice : myBluetoothDevices) {
+            if(tempBluetoothDevice.getName().equals("HUAWEI P9 lite")) {
+                bluetoothDevice = tempBluetoothDevice;
+                Log.d("found: ", bluetoothDevice.getName());
+                break;
+            }
+        }
+        connectToEsp32();
     }
 
-    public void bluetooth() {
-        Log.d("ok", "fino a qui ok");
+    public void connectToEsp32() {
+        try {
+            mSocket = bluetoothDevice.createInsecureRfcommSocketToServiceRecord(MY_UUID);
+        } catch (IOException e1) {
+            Log.d("error","socket not created");
+            e1.printStackTrace();
+        }
+        try{
+            mSocket.connect();
+            Log.d("connection ok", "connected");
+        }
+        catch(IOException e){
+            try {
+                mSocket.close();
+                Log.d("error","Cannot connect");
+            } catch (IOException e1) {
+                Log.d("error","Socket not closed");
+                e1.printStackTrace();
+            }
+        }
     }
 
     @Override
