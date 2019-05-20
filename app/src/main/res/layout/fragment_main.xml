@@ -9,7 +9,7 @@
     android:textColor="#E8E8E8"
     tools:context=".ui.main.FunMode">
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/section_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,6 +1,7 @@
 package com.example.grace.ui.main;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,13 +9,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import com.example.grace.MainActivity;
 import com.example.grace.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+@RequiresApi(api = Build.VERSION_CODES.M)
 public class TrainMode extends Fragment {
     MainActivity mainActivity = new MainActivity();
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setUserVisibleHint(false);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.train_mode,
@@ -87,6 +99,7 @@ public class TrainMode extends Fragment {
             }
 
         });
+
         FloatingActionButton ttsButton = view.findViewById(R.id.CFButton);
         ttsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +117,14 @@ public class TrainMode extends Fragment {
 
     public interface OnTrainButtonsListener {
         void onTrainButtonPressed(String id);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            Log.d("trainMode visibile", "train mode è appena diventata visibile");
+        }
     }
 }
 
