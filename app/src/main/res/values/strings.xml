@@ -3,18 +3,20 @@
     <string name="title_activity_main">Grace</string>
     <string name="tab_text_1">Fun Mode</string>
     <string name="tab_text_2">Train Mode</string>
-    <string name="Bottone4">Bottone4</string>
-    <string name="Bottone2">Bottone2</string>
-    <string name="Bottone1">Bottone1</string>
-    <string name="Bottone3">Bottone3</string>
+    <string name="Bottone1">Toilet</string>
+    <string name="Bottone2">Target</string>
+    <string name="Bottone3">Sad</string>
+    <string name="Bottone4">Tired</string>
     <string name="Toilet">Toilet</string>
     <string name="Target_Achieved">Target Achieved</string>
     <string name="Sad">Sad</string>
-    <string name="CText">CText</string>
+    <string name="TextInputEditTextHint">Digitare il feedback personalizzato</string>
     <string name="comment">comment</string>
     <string name="Tired">Tired</string>
-    <string name="Submit">Submit</string>
+    <string name="Submit">Invia al testimone</string>
     <string name="CFcomment">CFcomment</string>
-    <string name="title_tts">TTS</string>
+    <string name="title_tts">Feedback Personalizzato</string>
     <string name="title_train_mode">TrainMode</string>
+    <string name="textInputEditTextFunModeHint">Emozione inviata al testimone</string>
+    <string name="textInputLayoutFunModeLabel">Emozione inviata al testimone</string>
 </resources>

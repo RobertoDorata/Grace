@@ -10,35 +10,22 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#5D6AA3"
-        android:textColor="#E8E8E8"
         >
-
-        <!--<TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:minHeight="?actionBarSize"
-            android:padding="@dimen/appbar_padding"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-            android:background="#424C74"/>-->
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/listView"
-            android:background="#E8E8E8"
-            android:textColor="#E8E8E8"
             />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#5D6AA3"
-            android:textColor="#E8E8E8"
+            android:backgroundTint="@color/Background"
+            app:tabSelectedTextColor="@color/Primary"
+            app:tabTextColor="@color/Inactive"
+            app:tabIndicatorColor="@color/Divider"
             />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -46,7 +33,6 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="#E8E8E8"
         />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
