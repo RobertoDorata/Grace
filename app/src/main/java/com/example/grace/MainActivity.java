@@ -2,10 +2,13 @@ package com.example.grace;
 import android.Manifest;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
 import android.bluetooth.BluetoothSocket;
@@ -53,19 +56,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static android.bluetooth.BluetoothProfile.STATE_CONNECTED;
+import static android.nfc.NfcAdapter.EXTRA_DATA;
+
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class MainActivity extends AppCompatActivity implements FunMode.OnEmotionsButtonsListener, TrainMode.OnTrainButtonsListener {
 
-    ArrayList mScanFilter = new ArrayList<ScanFilter>();
-    ScanSettings mScanSettings = new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_POWER).setReportDelay(0)
-                .setCallbackType(ScanSettings.CALLBACK_TYPE_ALL_MATCHES).build();
-
     // Write a message to the database
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message");
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-
-    private BluetoothDevice bluetoothDevice = null;
+    //FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //DatabaseReference myRef = database.getReference("message");
+    //private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,9 +82,9 @@ public class MainActivity extends AppCompatActivity implements FunMode.OnEmotion
         BluetoothLeScanner mBluetoothLeScanner = mAdapter.getBluetoothLeScanner();
 
         //DATABASE FIREBASE
-        myRef.setValue("Hello, World!");
+        //myRef.setValue("Hello, World!");
         // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
+        /*myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -98,49 +98,15 @@ public class MainActivity extends AppCompatActivity implements FunMode.OnEmotion
                 // Failed to read value
                 Log.d("error", "Failed to read value.", error.toException());
             }
-        });
+        });*/
 
-        ActivityCompat.requestPermissions(MainActivity.this,
-                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                1);
-        ActivityCompat.requestPermissions(MainActivity.this,
-                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                1);
-
-        BluetoothGattCallback bluetoothGattCallback = new BluetoothGattCallback() {
-            @Override
-            public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
-                super.onConnectionStateChange(gatt, status, newState);
-                if(newState == BluetoothProfile.STATE_CONNECTED)
-                    Log.d("connesso", "connesso");
-            }
-        };
-
-        ScanCallback mBLEScan = new ScanCallback() {
-            @Override
-            public void onScanResult(int callbackType, ScanResult result) {
-                super.onScanResult(callbackType, result);
-                Log.d("FOUND: ", "" + result.getDevice().getName());
-                if(result.getDevice().getName() != null) {
-                    if(result.getDevice().getName().equals("Roberto’s MacBook Air")) {
-                        bluetoothDevice = result.getDevice();
-                        //Log.d("OK STOP", "Blank");
-                        bluetoothDevice.connectGatt(getApplicationContext(), true, bluetoothGattCallback);
-                    }
-                }
-            }
-        };
-
-        //mBluetoothLeScanner.startScan(mScanFilter, mScanSettings, mBLEScan);
     }
-
-
 
     @Override
     public void onEmotionButtonPressed(String id) {
          switch (id) {
             case "joyButton":
-                mDatabase.setValue("JoyButton");
+                //mDatabase.setValue("JoyButton");
                 Log.d("joyButton pressed", "in FunMode, joyButton has been pressed");
                 break;
 
@@ -153,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements FunMode.OnEmotion
                  break;
 
              case "sadnessButton":
-                 Log.d("sadnessButton pressed", "in FunMode, sadnessButton has been pressed");
+                 //Log.d("sadnessButton pressed", "in FunMode, sadnessButton has been pressed");
                  break;
          }
     }
@@ -205,5 +171,3 @@ public class MainActivity extends AppCompatActivity implements FunMode.OnEmotion
         }
     }
 }
-
-//TODO: AGGIUNGERE POSSIBILITA' DI MOSTRARE TUTTI I DISPOSITIVI BLUETOOTH DISPONIBILI, NON SOLO QUELLI IN CUI E' GIA' STATO FATTO IL PAIRING

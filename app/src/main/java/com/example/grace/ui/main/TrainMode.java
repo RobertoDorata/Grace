@@ -156,9 +156,23 @@ public class TrainMode extends Fragment {
                         Toast.LENGTH_LONG).show();
                 Log.d("MTDFButton pressed", "in TrainMode, maxTimeDefaultFeedbackButton has been pressed");
                 Intent myIntent = new Intent(getActivity(), TimeUntilDefaultFeedback.class);
-                startActivity(myIntent);
+                startActivityForResult(myIntent, 1);
             }
         });
+
+        FloatingActionButton runnedTimeButton = view.findViewById(R.id.runnedTimeButton);
+        runnedTimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "runnedTimeButton!",
+                        Toast.LENGTH_LONG).show();
+                Log.d("runnedTimeButtonPressed", "in TrainMode, runnedTimeButton has been pressed");
+                Intent myIntent = new Intent(getActivity(), RunnedTime.class);
+                startActivityForResult(myIntent, 2);
+            }
+        });
+
+
 
         return view;
     }
@@ -173,6 +187,14 @@ public class TrainMode extends Fragment {
         if (isVisibleToUser) {
             Log.d("trainMode visibile", "train mode è appena diventata visibile");
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent dataIntent) {
+        if(requestCode == 1)
+            Log.d("ORARIO RICEVUTO", dataIntent.getStringExtra("modified date"));
+        else if(requestCode == 2)
+            Log.d("TEMPO DI CORSA", " " + dataIntent.getStringExtra("runned time"));
     }
 }
 

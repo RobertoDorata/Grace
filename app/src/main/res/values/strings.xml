@@ -19,4 +19,5 @@
     <string name="title_train_mode">TrainMode</string>
     <string name="textInputEditTextFunModeHint">Emozione inviata al testimone</string>
     <string name="textInputLayoutFunModeLabel">Emozione inviata al testimone</string>
+    <string name="title_activity_runned_time">runnedTime</string>
 </resources>

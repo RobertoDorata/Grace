@@ -1,6 +1,21 @@
 package com.example.grace.ui.main;
+import android.Manifest;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCallback;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.BluetoothLeScanner;
+import android.bluetooth.le.ScanCallback;
+import android.bluetooth.le.ScanResult;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,20 +27,121 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import com.example.grace.MainActivity;
 import com.example.grace.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.lang.reflect.Array;
+import java.util.List;
+import java.util.UUID;
+
+import static android.bluetooth.BluetoothAdapter.STATE_CONNECTED;
+
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class FunMode extends Fragment {
+    private static final UUID HEART_RATE_SERVICE_UUID = UUID.fromString("6217FF49-AC7B-547E-EECF-016A06970BA9");
+    private static final UUID HEART_RATE_CHARACTERISTIC_UUID = UUID.fromString("6217FF4A-B07D-5DEB-261E-2586752D942E");
+    private BluetoothAdapter bluetoothAdapter;
+    private boolean mScanning = false; //usato nel thread 
+    private Handler handler = new Handler();
+
+    private BluetoothGatt bluetoothGatt;
+
+    private static final long SCAN_PERIOD = 5000;
+
+    private ScanCallback scanCallback = new ScanCallback() {
+        @Override
+        public void onScanResult(int callbackType, ScanResult result) {
+            super.onScanResult(callbackType, result);
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Log.d("device trovato: ", " " + result.getDevice().getName());
+                    if (result.getDevice().getName() != null) {
+                        if (result.getDevice().getName().equals("Polar HR Sensor")) {
+                            bluetoothGatt = result.getDevice().connectGatt(getContext(), true, gattCallback);
+                            Log.d("connesso a ", result.getDevice().getName());
+                        }
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void onBatchScanResults(List<ScanResult> results) {
+            super.onBatchScanResults(results);
+        }
+
+        @Override
+        public void onScanFailed(int errorCode) {
+            super.onScanFailed(errorCode);
+        }
+    };
+
+    private final BluetoothGattCallback gattCallback =
+            new BluetoothGattCallback() {
+                @Override
+                public void onConnectionStateChange(BluetoothGatt gatt, int status,
+                                                    int newState) {
+                    Log.d("HEY1","");
+                    if (newState == STATE_CONNECTED){
+                        gatt.discoverServices();
+                    }
+                }
+
+                @Override
+                // New services discovered
+                public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+                }
+
+                @Override
+                // Result of a characteristic read operation
+                public void onCharacteristicRead(BluetoothGatt gatt,
+                                                 BluetoothGattCharacteristic characteristic,
+                                                 int status) {
+                    gatt.readCharacteristic(characteristic);
+                }
+
+                @Override
+                public void onCharacteristicWrite (BluetoothGatt gatt,
+                                                   BluetoothGattCharacteristic characteristic,
+                                                   int status) {
+
+                    //characteristic.setValue(0x01,BluetoothGattCharacteristic.FORMAT_SINT8,0);
+                    gatt.writeCharacteristic(characteristic);
+                }
+
+                @Override
+                public void onDescriptorWrite(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status){
+                }
+
+                @Override
+                public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
+                }
+            };
+
     MainActivity mainActivity = new MainActivity();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setUserVisibleHint(false);
+
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                1);
+
+        final BluetoothManager bluetoothManager =
+                (BluetoothManager) getActivity().getSystemService(Context.BLUETOOTH_SERVICE);
+        bluetoothAdapter = bluetoothManager.getAdapter();
+        if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, 10);
+        }
+        scanLeDevice(true);
     }
 
 
@@ -46,6 +162,14 @@ public class FunMode extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "joyButton!",
                         Toast.LENGTH_LONG).show();
+                BluetoothGattService bluetoothGattService = bluetoothGatt.getService(HEART_RATE_SERVICE_UUID);
+                BluetoothGattCharacteristic bluetoothGattCharacteristic112 = bluetoothGattService.getCharacteristic(HEART_RATE_CHARACTERISTIC_UUID);
+                //Boolean letta = bluetoothGatt.readCharacteristic(bluetoothGattCharacteristic112);
+                //Log.d("LETTAA", letta.toString());
+                byte[] data_to_write = new byte[]{0x01};
+                bluetoothGattCharacteristic112.setValue(data_to_write);
+                Boolean scritta = bluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic112);
+                Log.d("SCRITTAAAA",scritta.toString());
                 Log.d("joyButton pressed", "in FunMode, joyButton has been pressed");
                 textView.setText("joy");
                 try {
@@ -117,6 +241,25 @@ public class FunMode extends Fragment {
         }
     }
 
+    private void scanLeDevice(final boolean enable) {
+        final BluetoothLeScanner bluetoothLeScanner = bluetoothAdapter.getBluetoothLeScanner();
+        if (enable) {
+            // Stops scanning after a pre-defined scan period.
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mScanning = false;
+                    bluetoothLeScanner.stopScan(scanCallback);
+                }
+            }, SCAN_PERIOD);
+
+            mScanning = true;
+            bluetoothLeScanner.startScan(scanCallback);
+        } else {
+            mScanning = false;
+            bluetoothLeScanner.stopScan(scanCallback);
+        }
+    }
 }
 
 //TODO: aggiungere imageView sopra ogni singola emozione, che si illuminino di verde/rosso a seconda se tale emozione è quella giusta o sbagliata

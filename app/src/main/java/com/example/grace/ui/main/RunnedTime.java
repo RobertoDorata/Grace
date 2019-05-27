@@ -13,7 +13,7 @@ import com.example.grace.R;
 
 import static java.lang.Integer.valueOf;
 
-public class TimeUntilDefaultFeedback extends AppCompatActivity {
+public class RunnedTime extends AppCompatActivity {
     private Intent intent = new Intent();
     private String modifiedData;
 
@@ -40,7 +40,7 @@ public class TimeUntilDefaultFeedback extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //salva il tempo che è stato salvato nel timePicker, il quale sarà da inviare al testimone
-                intent.putExtra("modified date", modifiedData);
+                intent.putExtra("runned time", modifiedData);
                 setResult(RESULT_OK, intent);
                 finish(); //close this activity and return to the previous one
             }
