@@ -42,8 +42,8 @@ import static android.bluetooth.BluetoothAdapter.STATE_CONNECTED;
 
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class FunMode extends Fragment {
-    private static final UUID HEART_RATE_SERVICE_UUID = UUID.fromString("6217FF49-AC7B-547E-EECF-016A06970BA9");
-    private static final UUID HEART_RATE_CHARACTERISTIC_UUID = UUID.fromString("6217FF4A-B07D-5DEB-261E-2586752D942E");
+    private static final UUID HEART_RATE_SERVICE_UUID = UUID.fromString("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
+    private static final UUID HEART_RATE_CHARACTERISTIC_UUID = UUID.fromString("beb5483e-36e1-4688-b7f5-ea07361b26a8");
     private BluetoothAdapter bluetoothAdapter;
     private boolean mScanning = false; //usato nel thread 
     private Handler handler = new Handler();
@@ -61,7 +61,7 @@ public class FunMode extends Fragment {
                 public void run() {
                     Log.d("device trovato: ", " " + result.getDevice().getName());
                     if (result.getDevice().getName() != null) {
-                        if (result.getDevice().getName().equals("Polar HR Sensor")) {
+                        if (result.getDevice().getName().equals("Testimone")) {
                             bluetoothGatt = result.getDevice().connectGatt(getContext(), true, gattCallback);
                             Log.d("connesso a ", result.getDevice().getName());
                         }
@@ -120,6 +120,7 @@ public class FunMode extends Fragment {
 
                 @Override
                 public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
+
                 }
             };
 
@@ -166,9 +167,13 @@ public class FunMode extends Fragment {
                 BluetoothGattCharacteristic bluetoothGattCharacteristic112 = bluetoothGattService.getCharacteristic(HEART_RATE_CHARACTERISTIC_UUID);
                 //Boolean letta = bluetoothGatt.readCharacteristic(bluetoothGattCharacteristic112);
                 //Log.d("LETTAA", letta.toString());
-                byte[] data_to_write = new byte[]{0x01};
+                Integer i = new Integer(0);
+                ++i;
+                byte[] data_to_write = new byte[]{i.byteValue()};
                 bluetoothGattCharacteristic112.setValue(data_to_write);
+                bluetoothGatt.connect();
                 Boolean scritta = bluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic112);
+                bluetoothGatt.disconnect();
                 Log.d("SCRITTAAAA",scritta.toString());
                 Log.d("joyButton pressed", "in FunMode, joyButton has been pressed");
                 textView.setText("joy");

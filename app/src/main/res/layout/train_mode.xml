@@ -1,136 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout2"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_marginStart="@dimen/activity_horizontal_margin"
-    android:layout_marginTop="@dimen/activity_vertical_margin"
-    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-    android:layout_marginBottom="@dimen/activity_vertical_margin"
-    android:background="@color/Background"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <!-- first button-->
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/first_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/Background"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/Bottone1"
-        android:textAllCaps="true"
-        android:textColor="@color/Primary"
-        android:textSize="14sp"
-        android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/fourth_button"
-        app:layout_constraintEnd_toStartOf="@+id/second_button"
-        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
+        app:layout_constraintVertical_bias="0.32" />
 
-    <!-- second button-->
-    <com.google.android.material.button.MaterialButton xmlns:tools="http://schemas.android.com/tools"
+    <Button
         android:id="@+id/second_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/Background"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/Bottone2"
-        android:textAllCaps="true"
-        android:textColor="@color/Primary"
-        android:textSize="14sp"
-        android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/third_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.583" />
+        app:layout_constraintVertical_bias="0.32" />
 
-    <!-- third button -->
-    <com.google.android.material.button.MaterialButton xmlns:tools="http://schemas.android.com/tools"
+    <Button
         android:id="@+id/third_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/Background"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/Bottone3"
-        android:textAllCaps="true"
-        android:textColor="@color/Primary"
-        android:textSize="14sp"
-        android:typeface="normal"
-        app:layout_constraintBottom_toTopOf="@+id/CFButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toEndOf="@+id/fourth_button" />
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.626" />
 
-    <!-- fourth button-->
-    <com.google.android.material.button.MaterialButton xmlns:tools="http://schemas.android.com/tools"
+    <Button
         android:id="@+id/fourth_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/Background"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/Bottone4"
-        android:textAllCaps="true"
-        android:textColor="@color/Primary"
-        android:textSize="14sp"
-        android:typeface="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.626" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/CFButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/Background"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintHorizontal_bias="0.905"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ClockButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/maxTimeDefaultFeedbackButton"
+        android:id="@+id/RunTimeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/Background"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/CFButton"
-        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.559"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fourth_button"
-        app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/runnedTimeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/Background"
-        android:clickable="true"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/CFButton"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toEndOf="@+id/maxTimeDefaultFeedbackButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        app:layout_constraintVertical_bias="0.867"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!-- I BOTTONI DEVONO DIVENTARE DI COLORE ARANCIONE QUANDO PREMUTI (E QUANDO ARRIVERA' LA STRINGA CORRISPONDENTE DAL TESTIMONE) E STAMPARE
-     UNA NOTIFICA TOAST -->

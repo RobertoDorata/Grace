@@ -148,7 +148,7 @@ public class TrainMode extends Fragment {
             }
         });
 
-        FloatingActionButton maxTimeDefaultFeedbackButton = view.findViewById(R.id.maxTimeDefaultFeedbackButton);
+        FloatingActionButton maxTimeDefaultFeedbackButton = view.findViewById(R.id.ClockButton);
         maxTimeDefaultFeedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,13 +160,13 @@ public class TrainMode extends Fragment {
             }
         });
 
-        FloatingActionButton runnedTimeButton = view.findViewById(R.id.runnedTimeButton);
-        runnedTimeButton.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton runTimeButton = view.findViewById(R.id.RunTimeButton);
+        runTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "runnedTimeButton!",
+                Toast.makeText(getActivity(), "runTimeButton!",
                         Toast.LENGTH_LONG).show();
-                Log.d("runnedTimeButtonPressed", "in TrainMode, runnedTimeButton has been pressed");
+                Log.d("runTimeButtonPressed", "in TrainMode, runTimeButton has been pressed");
                 Intent myIntent = new Intent(getActivity(), RunnedTime.class);
                 startActivityForResult(myIntent, 2);
             }

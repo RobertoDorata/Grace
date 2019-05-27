@@ -14,9 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyActionBar">
+        <activity android:name=".TrainMode1"></activity>
         <activity
             android:name=".ui.main.RunnedTime"
-            android:label="Ora in cui è terminata la corsa"/>
+            android:label="Ora in cui è terminata la corsa" />
         <activity android:name=".ui.main.TimeUntilDefaultFeedback" />
         <activity
             android:name=".ui.main.TTS"
