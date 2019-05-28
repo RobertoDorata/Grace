@@ -14,4 +14,7 @@
 
     <style name="MyActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="UnelevatedButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+    </style>
+
 </resources>

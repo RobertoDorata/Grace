@@ -13,7 +13,7 @@ import com.example.grace.R;
 
 import static java.lang.Integer.valueOf;
 
-public class RunnedTime extends AppCompatActivity {
+public class RunTime extends AppCompatActivity {
     private Intent intent = new Intent();
     private String modifiedData;
 
